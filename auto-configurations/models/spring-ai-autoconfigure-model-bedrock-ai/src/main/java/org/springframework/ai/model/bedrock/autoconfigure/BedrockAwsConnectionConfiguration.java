@@ -87,8 +87,10 @@ public class BedrockAwsConnectionConfiguration {
 			}
 			return providerBuilder.profileName(profile.getName()).build();
 		}
-		// IAM Role
-		return DefaultCredentialsProvider.builder().build();
+		else {
+			// Default: IAM Role, System Environment, etc.
+			return DefaultCredentialsProvider.builder().build();
+		}
 	}
 
 	@Bean
